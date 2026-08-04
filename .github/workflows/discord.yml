@@ -1,0 +1,31 @@
+name: Discord 自動推播
+
+on:
+  # 可以在 GitHub 網頁手動執行
+  workflow_dispatch:
+
+  # 每天台灣時間上午 9 點自動執行
+  schedule:
+    - cron: "0 9 * * *"
+      timezone: "Asia/Taipei"
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安裝 Python 套件
+        run: pip install -r requirements.txt
+
+      - name: 發送 Discord 訊息
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python my_webhook.py
