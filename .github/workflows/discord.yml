@@ -27,5 +27,5 @@ jobs:
 
       - name: 發送 Discord 訊息
         env:
-          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python my_webhook.py
