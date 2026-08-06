@@ -1,24 +1,31 @@
 import os
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import requests
 
 
 WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
-MESSAGE = "上班了 可以摸魚了"
 
 
 def send_discord_message() -> None:
     if not WEBHOOK_URL:
         raise ValueError("沒有設定 DISCORD_WEBHOOK_URL")
 
+    taiwan_time = datetime.now(
+        ZoneInfo("Asia/Taipei")
+    ).strftime("%Y-%m-%d %H:%M:%S")
+
+    message = f"上班了 可以摸魚了"
+
     response = requests.post(
         WEBHOOK_URL,
-        json={"content": MESSAGE},
+        json={"content": message},
         timeout=15,
     )
 
     response.raise_for_status()
-    print("訊息發送成功")
+    print(f"訊息發送成功，台灣時間：{taiwan_time}")
 
 
 if __name__ == "__main__":
