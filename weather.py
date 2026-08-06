@@ -79,7 +79,7 @@ def get_weather_message(county_id: str = "C66") -> str:
             raise ValueError("找不到 .weather-loc 天氣資料區塊")
 
         site_element = weather_block.select_one(".county-name")
-        time_element = weather_block.select_one(".datetime")
+        time_element = weather_block.select_one(".time")
         low_element = weather_block.select_one(".low")
         high_element = weather_block.select_one(".height")
         rain_element = weather_block.select_one(".rain")
