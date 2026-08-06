@@ -15,7 +15,7 @@ def send_discord_message() -> None:
         ZoneInfo("Asia/Taipei")
     ).strftime("%Y-%m-%d %H:%M:%S")
 
-    message = get_weather_massage()
+    message = get_weather_message()
 
     response = requests.post(
         WEBHOOK_URL,
