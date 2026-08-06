@@ -6,7 +6,7 @@ on:
 
   # 每天台灣時間上午 9 點自動執行
   schedule:
-    - cron: "10 13 * * *"
+    - cron: "0 6 * * *"
       timezone: "Asia/Taipei"
 jobs:
   send-message:
