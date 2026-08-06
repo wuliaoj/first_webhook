@@ -1,9 +1,8 @@
 import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
-
 import requests
-
+from weather import get_weather_message
 
 WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
@@ -16,7 +15,7 @@ def send_discord_message() -> None:
         ZoneInfo("Asia/Taipei")
     ).strftime("%Y-%m-%d %H:%M:%S")
 
-    message = f"上班了 可以摸魚了"
+    message = get_weather_massage()
 
     response = requests.post(
         WEBHOOK_URL,
