@@ -6,8 +6,8 @@ on:
 
   # 每天台灣時間上午 9 點自動執行
   schedule:
-    - cron: "0 12 * * *"
-    timezone: "Asia/Taipei"
+    - cron: "0 13 * * *"
+      timezone: "Asia/Taipei"
 jobs:
   send-message:
     runs-on: ubuntu-latest
